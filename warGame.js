@@ -1,20 +1,25 @@
 // function to create a new deck by combining suits and values of cards 
 function Deck() {
-    let suits = ['H', 'C', 'D', 'S'];
-    let ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
+    let suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
+    let ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
     let deck = [];
 // nested for loop to iterate through suits and ranks of cards and then pushing it to originally empty deck array
         for (let suitCounter=0; suitCounter<4; suitCounter++) {
             for (let rankCounter = 0; rankCounter<13; rankCounter++) {
-                deck.push(suits[suitCounter] + ranks[rankCounter])
+                // object to hold suit rank and value of card to refer to later for numerical comparison
+                let newCard = {
+                    suit: suits[suitCounter],
+                    ranks: ranks[rankCounter],
+                    value: rankCounter,
+                }
+                // pushing concatenated arrays to deck array
+                deck.push(newCard);
                 }
             }
             // log out to check accuracy of deck and then return deck to use it when function is called
             console.log(`Unshuffled 52-Card Deck: `, deck);
-            return deck;
-        
+            return deck;    
     }
-
 // shuffle deck using for loop to iterate through all 52 cards and built-in random method
 function shuffleDeck(deck) {
     for (let i = 0; i < 52; i++) {
@@ -35,5 +40,40 @@ console.log(`Player One Hand: `, player1Deck);
 let player2Deck = gameDeck.slice(26, 52);
 console.log(`Player Two Hand: `, player2Deck);
 
+// initiate variables to track score of both players
+let player1Score = 0;
+let player2Score = 0; 
+// ERROR: HOW DO I GET VALUES TO COMPARE OUT OF STRING ARRAYS?
+// iterate through 26 rounds and compare values of each players deck until cards run out, return winner of each round and add to score or declare tie
+for (let i = 0; i < 26; i ++) {
+    if (player1Deck[i].value > player2Deck[i].value) {
+        player1Score += 1;
+        console.log(`
+        Player One Card: ${player1Deck[i].ranks} of ${player1Deck[i].suit}
+        Player Two Card: ${player2Deck[i].ranks} of ${player2Deck[i].suit}
+        Player One Wins
+        `);
+    } else if (player1Deck[i].value < player2Deck[i].value) {
+        player2Score += 1;
+        console.log(`
+        Player One Card: ${player1Deck[i].ranks} of ${player1Deck[i].suit}
+        Player Two Card: ${player2Deck[i].ranks} of ${player2Deck[i].suit}
+        Player Two Wins
+        `);
+    } else {
+        console.log(`
+        Player One and Player Two Card: ${player1Deck[i].ranks} of ${player1Deck[i].suit}  
+        Tie
+        `)
+    }
+}
 
+if (player1Score>player2Score) {
+    console.log(`Player One wins!`);
+} else if (player2Score>player1Score) {
+    console.log(`Player Two wins!!`);
+} else {
+    console.log(`It's a TIE`);
+}
 
+console.log(`End of Game`);
