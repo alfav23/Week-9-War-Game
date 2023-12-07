@@ -48,6 +48,7 @@ let player2Score = 0;
 for (let i = 0; i < 26; i ++) {
     if (player1Deck[i].value > player2Deck[i].value) {
         player1Score += 1;
+        // log out info for each players card and declare who won the round or if there was a tie
         console.log(`
         Player One Card: ${player1Deck[i].ranks} of ${player1Deck[i].suit}
         Player Two Card: ${player2Deck[i].ranks} of ${player2Deck[i].suit}
@@ -67,7 +68,7 @@ for (let i = 0; i < 26; i ++) {
         `)
     }
 }
-
+// compare score variables to determine who had the higher score or if there was a tie and log out winner/results
 if (player1Score>player2Score) {
     console.log(`Player One wins!`);
 } else if (player2Score>player1Score) {
@@ -75,5 +76,5 @@ if (player1Score>player2Score) {
 } else {
     console.log(`It's a TIE`);
 }
-
+// End of WAR!
 console.log(`End of Game`);
