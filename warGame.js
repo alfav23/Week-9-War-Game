@@ -43,7 +43,6 @@ console.log(`Player Two Hand: `, player2Deck);
 // initiate variables to track score of both players
 let player1Score = 0;
 let player2Score = 0; 
-// ERROR: HOW DO I GET VALUES TO COMPARE OUT OF STRING ARRAYS?
 // iterate through 26 rounds and compare values of each players deck until cards run out, return winner of each round and add to score or declare tie
 for (let i = 0; i < 26; i ++) {
     if (player1Deck[i].value > player2Deck[i].value) {
