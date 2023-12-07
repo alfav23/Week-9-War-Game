@@ -68,10 +68,12 @@ class Player extends Card {
         }
     }    
 }
-
+// CREATE NEW INSTANCE OF DECK
 let deck = new Deck
+// CREATE TWO NEW INSTANCES OF PLAYER
 let player1 = new Player
 let player2 = new Player
+// CALL DETERMINE PLAYER METHOD
 player1.determineCurrentPlayer();
 player2.determineCurrentPlayer();
 // player1.addPoints();
